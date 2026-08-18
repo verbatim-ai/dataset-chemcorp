@@ -1,4 +1,4 @@
-# dataset-chemcorp
+# Dateset and Question & Answer set over virtual ChemCorp Industries company
 
 A synthetic document corpus for benchmarking Verbatim's AI RAG systems.
 
@@ -11,9 +11,16 @@ standalone [reportlab](https://www.reportlab.com/) scripts committed alongside t
 The corpus is paired with [`test.md`](test.md) — a 50-question QA benchmark with expected answers
 and per-question source attribution — so retrieval precision and answer accuracy can both be scored.
 
-Everything here is fictional. See [Disclaimer](#disclaimer).
+Everything here is **fictional**. See [Disclaimer](#disclaimer).
 
 ---
+
+## Disclaimer
+
+ChemCorp Industries S.A. does not exist. Every company, person, address, bank detail, price,
+financial figure, batch number and certification in this corpus is fabricated for benchmarking
+purposes. Real company names (BASF, Solvay, Arkema, Brenntag, TotalEnergies) appear only as
+synthetic supplier placeholders and none of the associated transactions, contacts or terms are real.
 
 ## Corpus at a glance
 
@@ -176,10 +183,3 @@ Every ground-truth string in `test.md` is verified to appear in the PDF it cites
 
 Each generator defines its documents as module-level dicts (`INVOICES`, `ORDERS`, `PRODUCTS`,
 `DATASETS`, `MEETINGS`, `DOCS`) near the top of the file — that is where to add or edit a document.
-
-## Disclaimer
-
-ChemCorp Industries S.A. does not exist. Every company, person, address, bank detail, price,
-financial figure, batch number and certification in this corpus is fabricated for benchmarking
-purposes. Real company names (BASF, Solvay, Arkema, Brenntag, TotalEnergies) appear only as
-synthetic supplier placeholders and none of the associated transactions, contacts or terms are real.
