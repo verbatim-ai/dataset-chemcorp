@@ -26,13 +26,13 @@ synthetic supplier placeholders and none of the associated transactions, contact
 
 | Directory | Docs | Pages | Ref pattern | Content |
 |---|---:|---:|---|---|
-| `data/invoices/` | 8 | 35 | `FC-2024-NNNNN` | Sales invoices (ChemCorp → customers), 4–5 pp: line items, 20% VAT, payment terms, batch traceability, ADR dangerous-goods classification, general T&Cs, COA specifications |
-| `data/orders/` | 6 | 18 | `BC-2024-NNNN` | Purchase orders (suppliers → ChemCorp), 3 pp: line items in tonnes, Incoterms, purchasing T&Cs, technical specification annex |
-| `data/product-sheets/` | 5 | 15 | `FT-<REF>-2024` | Product data sheets, 3 pp / 9 sections: CAS & EC identity, physico-chemical properties, analytical specs, CLP/GHS hazards, storage, transport |
-| `data/datasets/` | 3 | 11 | `DS-<DOMAIN>-2024` | Analytical tables (solvent QC, production batches, energy) with raw rows plus a statistical summary |
-| `data/internal-meeting-notes/` | 3 | 9 | `CRI-<DEPT>-2024-NNN` | Internal minutes (R&D, Production, Strategy): attendees, agenda, proceedings, action plan |
-| `data/customer-meeting-notes/` | 3 | 9 | `CRC-<CLIENT>-2024-NN` | Customer meeting minutes: account profile, background, identified opportunities, actions |
-| `data/business-goals/` | 2 | 7 | `OBJ-<THEME>-<YEARS>` | Confidential strategy documents: 2024 targets, 2024–2030 green-chemistry roadmap, risk analysis |
+| `website/docs/invoices/` | 8 | 35 | `FC-2024-NNNNN` | Sales invoices (ChemCorp → customers), 4–5 pp: line items, 20% VAT, payment terms, batch traceability, ADR dangerous-goods classification, general T&Cs, COA specifications |
+| `website/docs/orders/` | 6 | 18 | `BC-2024-NNNN` | Purchase orders (suppliers → ChemCorp), 3 pp: line items in tonnes, Incoterms, purchasing T&Cs, technical specification annex |
+| `website/docs/product-sheets/` | 5 | 15 | `FT-<REF>-2024` | Product data sheets, 3 pp / 9 sections: CAS & EC identity, physico-chemical properties, analytical specs, CLP/GHS hazards, storage, transport |
+| `website/docs/datasets/` | 3 | 11 | `DS-<DOMAIN>-2024` | Analytical tables (solvent QC, production batches, energy) with raw rows plus a statistical summary |
+| `website/docs/internal-meeting-notes/` | 3 | 9 | `CRI-<DEPT>-2024-NNN` | Internal minutes (R&D, Production, Strategy): attendees, agenda, proceedings, action plan |
+| `website/docs/customer-meeting-notes/` | 3 | 9 | `CRC-<CLIENT>-2024-NN` | Customer meeting minutes: account profile, background, identified opportunities, actions |
+| `website/docs/business-goals/` | 2 | 7 | `OBJ-<THEME>-<YEARS>` | Confidential strategy documents: 2024 targets, 2024–2030 green-chemistry roadmap, risk analysis |
 | **Total** | **30** | **104** | | |
 
 Reference codes keep their original French-derived prefixes (`FC` facture, `BC` bon de commande,
@@ -100,28 +100,71 @@ Batch numbering is intentionally inconsistent across document types (`LOT-2410xx
 the QC dataset, `B24xxxx` in the batch dataset, ad-hoc refs such as `ACK-230814` in the minutes) —
 there is no single batch registry to resolve against.
 
-## Regenerating the corpus
+## Regenerating the corpus and site
 
 ```bash
 ./build.sh
 ```
 
-`build.sh` creates a virtualenv, installs `requirements.txt` and runs all seven generators. To run
-them against an existing environment instead:
+`build.sh` creates a virtualenv, installs `requirements.txt`, runs the seven document generators
+and then `gen_website.py`. Documents land in `website/docs/<category>/`; the site pages are written
+to `website/`. To run against an existing environment instead:
 
 ```bash
 pip install -r requirements.txt
-for f in gen_*.py; do python3 "$f"; done
+for f in gen_*.py; do [ "$f" = gen_website.py ] || python3 "$f"; done
+python3 gen_website.py
 ```
 
-Each script writes into its own `data/<category>/` directory and prints the files it produced.
-Scripts are independent — run just one to rebuild a single category.
-
-Content is fully hardcoded in six of the seven generators. `gen_datasets.py` is the exception: it
+Each document generator is independent — run just one to rebuild a single category, then
+`gen_website.py` to refresh the index. Content is fully hardcoded in six of the seven; `gen_datasets.py`
 synthesises measurement values through `random.gauss`, seeded once at module level with
 `random.seed(42)` (`gen_datasets.py:11`). A **complete** run of that script is therefore
 reproducible; generating its three datasets individually or in a different order would not be.
 Regenerated PDFs differ from the committed ones only in their embedded creation timestamps.
+
+## The website
+
+`gen_website.py` emits a four-page static site into `website/`, ready to publish to a CDN with no
+build step and no external assets:
+
+| Page | Contents |
+|---|---|
+| `index.html` | What the company is, why the corpus exists, headline figures |
+| `company.html` | Identity, sites, people, both catalogues, customers, suppliers, strategy |
+| `dataset.html` | Every document listed by category with page counts and download links |
+| `benchmark.html` | The 50 questions, parsed directly from `test.md` |
+
+The document index is built by scanning `website/docs/`, and the benchmark page is parsed from
+`test.md`, so neither can drift from the corpus. Every page carries a fictional-content disclaimer
+in a banner and again in the footer. The CSS is theme-aware (light and dark).
+
+### Keeping the site out of search engines
+
+The corpus is fabricated, so it must never reach a search index. Three layers cover this, and
+`gen_website.py` emits all of them:
+
+| File | Covers |
+|---|---|
+| `robots.txt` | `Disallow: /` for `User-agent: *` plus 28 named crawlers, including Googlebot, Bingbot and the AI crawlers (GPTBot, ClaudeBot, CCBot, PerplexityBot, Google-Extended, …) |
+| `_headers` | `X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex` — read by Netlify and Cloudflare Pages. **This is the only layer that covers the PDFs**, which cannot carry a meta tag |
+| `vercel.json` | The same header, for Vercel |
+
+Each HTML page additionally carries `noindex, nofollow, noarchive, nosnippet, noimageindex` as a
+robots meta tag, with `googlebot` and `bingbot` variants. No sitemap is published.
+
+**If your CDN is not Netlify, Cloudflare Pages or Vercel**, configure the equivalent response
+header yourself — `X-Robots-Tag: noindex, nofollow` on every path. Without it the 30 PDFs rely on
+`robots.txt` alone.
+
+**One caveat worth understanding.** `Disallow: /` stops compliant crawlers from *fetching*, which
+also means they never see the `noindex` directive. For a site that has never been published that is
+exactly right — it is never indexed in the first place. But if a URL is ever linked publicly, Google
+can list the bare URL with no description precisely because it is not allowed to fetch the page and
+confirm the `noindex`. To *guarantee* a URL is dropped from an index, crawling must be allowed so
+the directive is seen. Flip `ROBOTS_MODE` at the top of `gen_website.py` from `"block-crawl"` to
+`"allow-crawl"` if the site is linked publicly or a URL has already been indexed; that mode depends
+on the `X-Robots-Tag` header being served, so confirm your CDN sends it first.
 
 ## The QA benchmark
 
@@ -157,6 +200,10 @@ Every ground-truth string in `test.md` is verified to appear in the PDF it cites
   not expect to find three `FAIL` rows in the table.
 - There is **no toluene product data sheet**. The toluene specification (benzene ≤ 1 ppm) lives in
   the invoice technical annex (`gen_invoices.py:291-296`), which is reproduced on every invoice.
+- **Stick to WinAnsi-encodable characters in document text.** The PDFs use the standard Helvetica
+  font, so anything outside WinAnsiEncoding renders as a black box. Unicode subscripts, `≤`, `≥`,
+  `✓` and `⚠` were all silently broken until they were replaced with `2`/`3`, `<=`, `>=` and plain
+  words. Bullets must be `•` or `»` (both encode); `◆` and `▶` do not.
 - Three earlier defects in `test.md` (a propylene glycol cross-reference to a purchase order that
   never contained it, a toluene spec attributed to the wrong PDF, and batch IDs attributed to the
   wrong dataset) have been corrected. If you are comparing against an older copy of the benchmark,
@@ -166,16 +213,25 @@ Every ground-truth string in `test.md` is verified to appear in the PDF it cites
 
 ```
 .
-├── data/
-│   ├── business-goals/          ← gen_business_goals.py
-│   ├── customer-meeting-notes/  ← gen_customer_meetings.py
-│   ├── datasets/                ← gen_datasets.py
-│   ├── internal-meeting-notes/  ← gen_internal_meetings.py
-│   ├── invoices/                ← gen_invoices.py
-│   ├── orders/                  ← gen_orders.py
-│   └── product-sheets/          ← gen_product_sheets.py
-├── gen_*.py                     # 7 standalone reportlab generators, no CLI args
-├── build.sh                     # venv + install + run all generators
+├── website/
+│   ├── index.html               # generated site pages
+│   ├── company.html
+│   ├── dataset.html
+│   ├── benchmark.html
+│   ├── assets/site.css
+│   ├── robots.txt               # search engine exclusion
+│   ├── _headers                 # X-Robots-Tag for Netlify / Cloudflare Pages
+│   ├── vercel.json              # X-Robots-Tag for Vercel
+│   └── docs/                    # the corpus, served by the site
+│       ├── business-goals/          ← gen_business_goals.py
+│       ├── customer-meeting-notes/  ← gen_customer_meetings.py
+│       ├── datasets/                ← gen_datasets.py
+│       ├── internal-meeting-notes/  ← gen_internal_meetings.py
+│       ├── invoices/                ← gen_invoices.py
+│       ├── orders/                  ← gen_orders.py
+│       └── product-sheets/          ← gen_product_sheets.py
+├── gen_*.py                     # 7 document generators + gen_website.py
+├── build.sh                     # venv + install + build corpus and site
 ├── requirements.txt             # reportlab (the only third-party dependency)
 ├── test.md                      # 50-question QA benchmark
 └── README.md

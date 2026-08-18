@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 """Generate mock purchase orders for ChemCorp Industries."""
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
@@ -289,7 +289,7 @@ def build_order(order, out_dir):
     print(f"  Generated: {path}")
 
 if __name__ == '__main__':
-    out = os.path.join(os.path.dirname(__file__), 'data', 'orders')
+    out = os.path.join(os.path.dirname(__file__), 'website', 'docs', 'orders')
     os.makedirs(out, exist_ok=True)
     for o in ORDERS:
         build_order(o, out)

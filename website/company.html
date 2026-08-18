@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The company — ChemCorp Industries (fictional)</title>
+<meta name="description" content="The fictional company behind the benchmark corpus: identity, sites, people, catalogues, customers and strategy.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#127883;</text></svg>">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">CC</span>
+      <span class="brand-text"><strong>ChemCorp Industries</strong><span class="brand-sub">Synthetic RAG benchmark corpus</span></span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="index.html">Overview</a>
+      <a href="company.html" class="is-active">The company</a>
+      <a href="dataset.html">Dataset</a>
+      <a href="benchmark.html">Benchmark</a>
+    </nav>
+  </div>
+</header>
+
+<div class="disclaimer" role="note">
+  <div class="wrap">
+    <span class="disclaimer-tag">Fictional</span>
+    <p>ChemCorp Industries S.A. is a <strong>fictional company</strong>. Every document, figure, person and transaction on this site is synthetic, created solely to benchmark retrieval-augmented generation systems.</p>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="wrap band">
+  <p class="eyebrow">The company</p>
+  <h1>ChemCorp Industries S.A.</h1>
+  <p class="lede">Everything on this page is drawn from the documents in the corpus. It is the
+  world the benchmark questions are asked about.</p>
+</section>
+
+<section class="wrap band">
+  <h2>Identity</h2>
+  <dl class="factgrid">
+    <div><dt>Registered name</dt><dd>ChemCorp Industries S.A.</dd></div>
+    <div><dt>Head office</dt><dd>14 Rue des Réactifs, 69100 Villeurbanne, France</dd></div>
+    <div><dt>VAT number</dt><dd><code>FR 42 387 542 891</code></dd></div>
+    <div><dt>Certifications</dt><dd>ISO 9001:2015, ISO 14001:2015</dd></div>
+    <div><dt>Laboratory</dt><dd>COFRAC-accredited, No. 1-5421</dd></div>
+    <div><dt>Quality system</dt><dd>LIMS <code>QC-TRACK v4.2</code></dd></div>
+  </dl>
+  <p class="muted small">There is deliberately no SIRET, RCS entry or share capital anywhere in the
+  corpus — the identity is intentionally incomplete so it can never be mistaken for a real filing.
+  Bank details appear on the invoices and are equally fictional.</p>
+</section>
+
+<section class="wrap band">
+  <h2>Sites</h2>
+  <div class="cards">
+    <div class="card"><h3>Villeurbanne</h3><p>Head office, laboratory and warehouses A, B and C.
+    Production workshops for solvents, acids, bases and specialities.</p></div>
+    <div class="card"><h3>Roussillon</h3><p>Secondary production site, Zone A building 12.</p></div>
+    <div class="card"><h3>Lyon-Est terminal</h3><p>Chemical terminal, bay 7 — bulk tanker
+    reception and dispatch.</p></div>
+    <div class="card"><h3>Limonest</h3><p>Depot holding the permanent safety stock that backs
+    48-hour urgent deliveries.</p></div>
+  </div>
+</section>
+
+<section class="wrap band">
+  <h2>Who works there</h2>
+  <p class="muted">The same cast recurs consistently across meeting minutes and strategy papers,
+  which is what makes people-based retrieval questions answerable.</p>
+  <table class="data"><thead><tr><th>Name</th><th>Role</th></tr></thead><tbody><tr><td>François Lemercier</td><td>Chief Executive Officer</td></tr><tr><td>Hélène Marchand</td><td>Operations Director (COO)</td></tr><tr><td>Dr. Martine Chabrol</td><td>R&amp;D Director (CTO)</td></tr><tr><td>Thierry Bruneau</td><td>Finance Director (CFO)</td></tr><tr><td>Pierre Valentin</td><td>Sales Director</td></tr><tr><td>Bertrand Vidal</td><td>Production Manager</td></tr><tr><td>Ingrid Hoffmann</td><td>QHSE &amp; Regulatory</td></tr><tr><td>Alain Rousset</td><td>Purchasing Manager</td></tr><tr><td>Samuel Osei</td><td>International Logistics</td></tr><tr><td>Antoine Ferretti</td><td>R&amp;D Project Manager</td></tr></tbody></table>
+</section>
+
+<section class="wrap band">
+  <h2>Two catalogues</h2>
+  <div class="prose">
+    <p>ChemCorp <strong>sells</strong> 18 finished products priced per litre or kilogram, and
+    <strong>buys</strong> 15 raw materials priced per tonne. The two catalogues are almost
+    disjoint: only methanol and ethyl acetate appear in both, and they carry different reference
+    codes on each side (<code>ME-PUR</code> vs <code>MeOH-T</code>, <code>EA-99</code> vs
+    <code>EtOAc-T</code>). No query can join an invoice line to a purchase-order line by reference
+    — which is exactly the trap the cross-document questions probe.</p>
+  </div>
+  <div class="cards two">
+    <div class="card">
+      <h3>Sold — 18 SKUs</h3>
+      <p class="muted small">Priced in €/L and €/kg. Five have a published data sheet.</p>
+      <p class="chips">
+        <span class="chip">AK-995 acetone</span><span class="chip">TL-DIS toluene</span>
+        <span class="chip">ET-96D ethanol</span><span class="chip">HCL-33 hydrochloric acid</span>
+        <span class="chip">NaOH-P sodium hydroxide</span><span class="chip">ME-PUR methanol</span>
+        <span class="chip">IPA-99 isopropanol</span><span class="chip">H2SO4-96 sulfuric acid</span>
+        <span class="chip">DCM-TEC dichloromethane</span><span class="chip">EA-99 ethyl acetate</span>
+        <span class="chip">NaCl-A sodium chloride</span><span class="chip">H2O2-30 hydrogen peroxide</span>
+        <span class="chip">NH3-25 ammonia</span><span class="chip">GLY-USP glycerol</span>
+        <span class="chip">HNO3-65 nitric acid</span><span class="chip">XYL-MIX xylenes</span>
+        <span class="chip">PG-USP propylene glycol</span><span class="chip">TEA-99 triethylamine</span>
+      </p>
+    </div>
+    <div class="card">
+      <h3>Bought — 15 raw materials</h3>
+      <p class="muted small">Priced in €/tonne, from five suppliers.</p>
+      <p class="chips">
+        <span class="chip">EG-999P ethylene glycol</span><span class="chip">PO-99 propylene oxide</span>
+        <span class="chip">MAH-PAS maleic anhydride</span><span class="chip">MeOH-T methanol</span>
+        <span class="chip">AA-GLA acrylic acid</span><span class="chip">nBA-99 butyl acrylate</span>
+        <span class="chip">STY-INH styrene</span><span class="chip">AcOH-G acetic acid</span>
+        <span class="chip">DEG-99 diethylene glycol</span><span class="chip">MEK-99 MEK</span>
+        <span class="chip">CHCl3-S chloroform</span><span class="chip">AcO-99 acetic anhydride</span>
+        <span class="chip">CyHex-T cyclohexane</span><span class="chip">DMF-99 DMF</span>
+        <span class="chip">EtOAc-T ethyl acetate</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap band">
+  <h2>Customers</h2>
+  <table class="data"><thead><tr><th>Company</th><th>Location</th><th>Business</th></tr></thead>
+  <tbody><tr><td><strong>Plastex GmbH</strong></td><td>Munich, Germany</td><td>Technical plastic parts (PC, ABS, POM) for automotive and electronics</td></tr><tr><td><strong>Solvalor S.A.S.</strong></td><td>Harfleur, France</td><td>Industrial cleaning solvents and degreasers</td></tr><tr><td><strong>Nordic Resins AB</strong></td><td>Södertälje, Sweden</td><td>Alkyd and unsaturated polyester resins for paints and coatings</td></tr><tr><td><strong>Iberchem S.L.</strong></td><td>Sevilla, Spain</td><td>Speciality chemical formulation</td></tr><tr><td><strong>Deltasolv NV</strong></td><td>Antwerpen, Belgium</td><td>Solvent distribution</td></tr></tbody></table>
+  <p class="muted small">Plastex, Solvalor and Nordic Resins appear in both invoices and meeting
+  minutes; Iberchem and Deltasolv appear in invoices only.</p>
+</section>
+
+<section class="wrap band">
+  <h2>Suppliers</h2>
+  <table class="data"><thead><tr><th>Company</th><th>Location</th><th>Standard lead time</th></tr></thead>
+  <tbody><tr><td><strong>BASF SE</strong></td><td>Ludwigshafen, Germany</td><td>10 working days</td></tr><tr><td><strong>Solvay S.A.</strong></td><td>Brussels, Belgium</td><td>15 working days</td></tr><tr><td><strong>Arkema France S.A.S.</strong></td><td>Colombes, France</td><td>8 working days</td></tr><tr><td><strong>Brenntag SAS</strong></td><td>Limonest, France</td><td>5 working days</td></tr><tr><td><strong>TotalEnergies Fluids</strong></td><td>Paris La Défense, France</td><td>12 working days</td></tr></tbody></table>
+  <p class="muted small">Real company names used as placeholder counterparties. Nothing stated
+  about them in this corpus is factual.</p>
+</section>
+
+<section class="wrap band">
+  <h2>Where the company says it is going</h2>
+  <div class="cards">
+    <div class="card"><h3>2027 targets</h3><p>Revenue €62M (+32% on 2023), EBITDA margin 22%,
+    bio-based products at 25% of revenue against below 1% in 2023.</p></div>
+    <div class="card"><h3>BioSolv</h3><p>Bio-based solvents from biomass. BioSolv-3 reached a
+    Kauri-Butanol value of 42 against a target of 50; commercial launch planned for Q3 2024.</p></div>
+    <div class="card"><h3>GreenCat</h3><p>Reusable heterogeneous catalysts. GreenCat-Est uses a
+    modified H-ZSM-5 zeolite for an estimated 23% energy saving on esterification.</p></div>
+    <div class="card"><h3>Green roadmap</h3><p>€14.2M over 2024–2030 across five pillars, funded
+    40% from equity, 25% green debt, 20% grants and 15% research tax credit.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div>
+      <h2>ChemCorp Industries S.A.</h2>
+      <p class="muted">A fictional chemical distributor. This entire site and every document it
+      hosts is synthetic material built to benchmark retrieval-augmented generation systems.
+      No real company, person, transaction, price or certification is represented. Company names
+      that exist in reality (BASF, Solvay, Arkema, Brenntag, TotalEnergies) appear only as
+      placeholder counterparties; nothing stated about them is factual.</p>
+    </div>
+    <div>
+      <h2>Corpus</h2>
+      <ul class="plain">
+        <li><a href="dataset.html">Browse all 30 documents</a></li>
+        <li><a href="benchmark.html">50-question QA benchmark</a></li>
+        <li><a href="https://github.com/verbatim-ai/dataset-chemcorp/tree/main">Source repository</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bar"><p class="muted">Generated by <code>gen_website.py</code> — static output, no tracking.</p></div>
+</footer>
+</body>
+</html>

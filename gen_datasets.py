@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 """Generate mock chemical data sheets / analytical datasets for ChemCorp Industries."""
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
@@ -70,7 +70,7 @@ def make_batch_data():
 # --- Dataset 3: Energy consumption by unit
 UNITS = ['Solvents workshop', 'Acids workshop', 'Bases workshop', 'Specialities workshop', 'Utilities / HVAC', 'Lighting / Misc.']
 def make_energy_data():
-    rows = [['Month', 'Unit', 'Elec. (MWh)', 'Gas (MWh NCV)', 'Steam (t)', 'Water (m³)', 'Waste (t)', 'CO₂ (t eq.)']]
+    rows = [['Month', 'Unit', 'Elec. (MWh)', 'Gas (MWh NCV)', 'Steam (t)', 'Water (m³)', 'Waste (t)', 'CO2 (t eq.)']]
     base_e = [145, 98, 67, 112, 88, 22]
     base_g = [32, 56, 78, 18, 44, 5]
     base_s = [12, 28, 45, 8, 65, 2]
@@ -102,11 +102,11 @@ DATASETS = [
         ],
         "spec_table": [
             ['Parameter', 'Acetone 99.5%', 'Methanol 99.9%', 'Isopropanol 99%', 'Method'],
-            ['Purity (%)', '≥ 99.5', '≥ 99.9', '≥ 99.0', 'GC-FID'],
-            ['Water (%)', '≤ 0.20', '≤ 0.05', '≤ 0.20', 'Karl Fischer'],
-            ['Colour APHA', '≤ 10', '≤ 10', '≤ 10', 'ASTM D1209'],
-            ['Acidity (%)', '≤ 0.002', '≤ 0.001', '≤ 0.002', 'Potentiometry'],
-            ['Evap. residue (%)', '≤ 0.001', '≤ 0.001', '≤ 0.001', 'ASTM D1353'],
+            ['Purity (%)', '>= 99.5', '>= 99.9', '>= 99.0', 'GC-FID'],
+            ['Water (%)', '<= 0.20', '<= 0.05', '<= 0.20', 'Karl Fischer'],
+            ['Colour APHA', '<= 10', '<= 10', '<= 10', 'ASTM D1209'],
+            ['Acidity (%)', '<= 0.002', '<= 0.001', '<= 0.002', 'Potentiometry'],
+            ['Evap. residue (%)', '<= 0.001', '<= 0.001', '<= 0.001', 'ASTM D1353'],
         ],
         "data_fn": make_purity_data,
         "col_widths": [1*cm, 3.8*cm, 2.5*cm, 2*cm, 1.8*cm, 1.5*cm, 1.8*cm, 2*cm, 2.6*cm],
@@ -114,8 +114,8 @@ DATASETS = [
             ('Acetone 99.5%', 'GC purity', '99.52–99.82%', '99.65%', '0.08%', '99.5% — 100%'),
             ('Methanol 99.9%', 'GC purity', '99.55–99.91%', '99.74%', '0.07%', '99.9% — 100%'),
             ('Isopropanol 99%', 'GC purity', '99.08–99.78%', '99.48%', '0.12%', '99.0% — 100%'),
-            ('All solvents', 'Water KF (%)', '0.03–0.18%', '0.09%', '0.03%', '≤ 0.20%'),
-            ('All solvents', 'Colour APHA', '2–14', '6', '3', '≤ 10'),
+            ('All solvents', 'Water KF (%)', '0.03–0.18%', '0.09%', '0.03%', '<= 0.20%'),
+            ('All solvents', 'Colour APHA', '2–14', '6', '3', '<= 10'),
         ],
     },
     {
@@ -152,12 +152,12 @@ DATASETS = [
         "title": "Energy and Environmental Consumption Data 2024",
         "description": "This dataset presents the monthly consumption of energy (electricity, natural gas, steam), water and waste generation per production unit at the Villeurbanne site for the year 2024. These data feed the annual ESG report and the carbon reporting (scopes 1 and 2).",
         "method_notes": [
-            ("Electricity", "Schneider PowerLogic PM8000 sub-meters per unit — daily readings, aggregated monthly. Emission factor: 0.0567 kgCO₂/kWh (ADEME 2024 — French grid)."),
-            ("Natural gas", "Elster BK-G16 meters — monthly readings. Emission factor: 0.185 kgCO₂/kWh NCV (ADEME 2024)."),
-            ("Steam", "Yokogawa ADMAG mass meters on the distribution line. Steam emission factor: 0.070 kgCO₂/kg (in-house gas boiler production)."),
+            ("Electricity", "Schneider PowerLogic PM8000 sub-meters per unit — daily readings, aggregated monthly. Emission factor: 0.0567 kgCO2/kWh (ADEME 2024 — French grid)."),
+            ("Natural gas", "Elster BK-G16 meters — monthly readings. Emission factor: 0.185 kgCO2/kWh NCV (ADEME 2024)."),
+            ("Steam", "Yokogawa ADMAG mass meters on the distribution line. Steam emission factor: 0.070 kgCO2/kg (in-house gas boiler production)."),
             ("Water", "Endress+Hauser Prosonic Flow ultrasonic meters on the demineralised water and process water networks."),
             ("Waste", "Waste tracking forms (BSD) CERFA No. 12571. Hazardous waste accounted for separately."),
-            ("CO₂ equivalent", "Calculated using the formula: CO₂ = Elec×0.0567 + Gas×0.185 + Steam×0.070 (in tonnes). Scope: scopes 1 and 2 only."),
+            ("CO2 equivalent", "Calculated using the formula: CO2 = Elec×0.0567 + Gas×0.185 + Steam×0.070 (in tonnes). Scope: scopes 1 and 2 only."),
         ],
         "spec_table": [
             ['Indicator', '2022', '2023', '2024 target', '2027 target'],
@@ -165,15 +165,15 @@ DATASETS = [
             ['Total natural gas (MWh NCV)', '2,845', '2,710', '2,493 (-8%)', '2,140 (-21%)'],
             ['Total process water (m³)', '48,200', '45,600', '43,300 (-5%)', '36,500 (-20%)'],
             ['Total waste (t)', '812', '745', '690 (-7%)', '520 (-30%)'],
-            ['Total CO₂ (t eq.)', '1,247', '1,198', '1,102 (-8%)', '868 (-28%)'],
-            ['CO₂ intensity (kgCO₂/t product)', '1.39', '1.31', '1.20 (-8%)', '0.97 (-26%)'],
+            ['Total CO2 (t eq.)', '1,247', '1,198', '1,102 (-8%)', '868 (-28%)'],
+            ['CO2 intensity (kgCO2/t product)', '1.39', '1.31', '1.20 (-8%)', '0.97 (-26%)'],
         ],
         "data_fn": make_energy_data,
         "col_widths": [1.2*cm, 3.5*cm, 1.8*cm, 2.2*cm, 1.5*cm, 1.5*cm, 1.6*cm, 2.2*cm],
         "statistics": [
             ('Solvents workshop', 'Elec. (MWh/month)', '132–165', '148', '10', 'OEE >80%'),
             ('Acids workshop', 'Gas (MWh/month)', '48–68', '57', '7', 'Boiler efficiency'),
-            ('Site total', 'CO₂ per month (t)', '82–128', '99', '13', 'Annual target 1,102 t'),
+            ('Site total', 'CO2 per month (t)', '82–128', '99', '13', 'Annual target 1,102 t'),
             ('Bases workshop', 'Water (m³/month)', '35–55', '43', '6', 'Target -5%/year'),
             ('Site total', 'Waste (t/month)', '55–72', '62', '5', 'Target -7% in 2024'),
         ],
@@ -291,7 +291,7 @@ def build_dataset(ds, out_dir):
     print(f"  Generated: {path}")
 
 if __name__ == '__main__':
-    out = os.path.join(os.path.dirname(__file__), 'data', 'datasets')
+    out = os.path.join(os.path.dirname(__file__), 'website', 'docs', 'datasets')
     os.makedirs(out, exist_ok=True)
     for d in DATASETS:
         build_dataset(d, out)

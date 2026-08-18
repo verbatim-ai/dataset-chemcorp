@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 """Generate mock invoice PDFs for ChemCorp Industries."""
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -267,7 +267,7 @@ def build_invoice(inv, out_dir):
     ]))
     story.append(tadr)
     story.append(Spacer(1, 0.4*cm))
-    story.append(Paragraph("⚠ Transport entrusted to an ADR-approved carrier. The loader is responsible for the loading declaration. ADR documents available on request.", ParagraphStyle('warn', fontSize=8, textColor=colors.HexColor('#c0392b'))))
+    story.append(Paragraph("WARNING: Transport entrusted to an ADR-approved carrier. The loader is responsible for the loading declaration. ADR documents available on request.", ParagraphStyle('warn', fontSize=8, textColor=colors.HexColor('#c0392b'))))
     story.append(Spacer(1, 0.5*cm))
 
     story += legal_page(styles)
@@ -281,24 +281,24 @@ def build_invoice(inv, out_dir):
 
     specs = [
         ('Technical acetone 99.5%', [
-            ('Purity (GC)', '≥ 99.5%', '99.72%'),
-            ('Water (KF)', '≤ 0.2%', '0.08%'),
-            ('Acidity (as acetic acid)', '≤ 0.002%', '< 0.001%'),
-            ('Evaporation residue', '≤ 0.001%', '< 0.001%'),
+            ('Purity (GC)', '>= 99.5%', '99.72%'),
+            ('Water (KF)', '<= 0.2%', '0.08%'),
+            ('Acidity (as acetic acid)', '<= 0.002%', '< 0.001%'),
+            ('Evaporation residue', '<= 0.001%', '< 0.001%'),
             ('Density at 20°C', '0.789–0.792 g/mL', '0.790 g/mL'),
             ('Refractive index', '1.356–1.360', '1.3588'),
         ]),
         ('Distilled toluene', [
-            ('Purity (GC)', '≥ 99.5%', '99.68%'),
-            ('Benzene', '≤ 1 ppm', '< 0.5 ppm'),
-            ('Water', '≤ 0.02%', '0.009%'),
+            ('Purity (GC)', '>= 99.5%', '99.68%'),
+            ('Benzene', '<= 1 ppm', '< 0.5 ppm'),
+            ('Water', '<= 0.02%', '0.009%'),
             ('Density at 20°C', '0.864–0.867 g/mL', '0.865 g/mL'),
         ]),
         ('Sodium hydroxide pearls', [
-            ('Purity (NaOH)', '≥ 99.0%', '99.4%'),
-            ('Na₂CO₃', '≤ 0.5%', '0.2%'),
-            ('NaCl', '≤ 0.02%', '< 0.01%'),
-            ('Fe', '≤ 5 ppm', '2 ppm'),
+            ('Purity (NaOH)', '>= 99.0%', '99.4%'),
+            ('Na2CO3', '<= 0.5%', '0.2%'),
+            ('NaCl', '<= 0.02%', '< 0.01%'),
+            ('Fe', '<= 5 ppm', '2 ppm'),
         ]),
     ]
 
@@ -333,7 +333,7 @@ def build_invoice(inv, out_dir):
     print(f"  Generated: {path}")
 
 if __name__ == '__main__':
-    out = os.path.join(os.path.dirname(__file__), 'data', 'invoices')
+    out = os.path.join(os.path.dirname(__file__), 'website', 'docs', 'invoices')
     os.makedirs(out, exist_ok=True)
     for inv in INVOICES:
         build_invoice(inv, out)

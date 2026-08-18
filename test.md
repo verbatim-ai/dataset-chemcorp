@@ -52,7 +52,7 @@ Each question states the expected source so retrieval precision can be scored.
 > *Source: FT-AK995-2024.pdf*
 
 **Q11.** What is the maximum benzene specification for ChemCorp distilled toluene?
-> **A.** Benzene ≤ 1 ppm (typical COA result: < 0.5 ppm).
+> **A.** Benzene <= 1 ppm (typical COA result: < 0.5 ppm).
 > *Source: FC-2024-00187.pdf (technical specifications annex, page 3 — there is no toluene product data sheet in the dataset; the specification appears in the invoice annex, which is reproduced on every invoice)*
 
 **Q12.** What is the solubility of sodium hydroxide in water at 20 °C, and why must care be taken when dissolving it?
@@ -68,7 +68,7 @@ Each question states the expected source so retrieval precision can be scored.
 > *Source: FT-H2SO496-2024.pdf*
 
 **Q15.** What is the UN number and ADR class of 33% hydrochloric acid, and what is the maximum iron specification?
-> **A.** UN 1789, ADR class 8, packing group II, tunnel code E. Iron (Fe) ≤ 3 ppm.
+> **A.** UN 1789, ADR class 8, packing group II, tunnel code E. Iron (Fe) <= 3 ppm.
 > *Source: FT-HCL33-2024.pdf*
 
 ---
@@ -207,8 +207,8 @@ Each question states the expected source so retrieval precision can be scored.
 > **A.** 8,102 MWh in 2023. 2024 target: 7,454 MWh (-8%). 2027 target: 6,320 MWh (-22% vs 2023).
 > *Source: DS-ENERGIE-2024.pdf*
 
-**Q45.** What CO₂ emissions formula is used in the energy dataset, and which emission factors are applied?
-> **A.** CO₂ (t) = Electricity (MWh) × 0.0567 + Gas (MWh NCV) × 0.185 + Steam (t) × 0.070. Factor sources: ADEME 2024 for French grid electricity and natural gas; the steam factor is derived from the in-house gas boiler.
+**Q45.** What CO2 emissions formula is used in the energy dataset, and which emission factors are applied?
+> **A.** CO2 (t) = Electricity (MWh) × 0.0567 + Gas (MWh NCV) × 0.185 + Steam (t) × 0.070. Factor sources: ADEME 2024 for French grid electricity and natural gas; the steam factor is derived from the in-house gas boiler.
 > *Source: DS-ENERGIE-2024.pdf*
 
 ---
@@ -228,7 +228,7 @@ Each question states the expected source so retrieval precision can be scored.
 > *Cross source: CRI-PROD-2024-007.pdf + OBJ-STRAT-2024.pdf*
 
 **Q49.** Nordic Resins AB appears as a customer both in the invoices and in the sales meeting minutes. How consistent are the products invoiced with those discussed in the customer meeting?
-> **A.** Invoices FC-2024-00318 and FC-2024-00728 deliver mineral acids (HCl, H₂SO₄, HNO₃), xylenes, NaOH, DCM, propylene glycol and triethylamine to Nordic Resins. The meeting CRC-NORDIC-2024-05 instead cites annual purchases of "phthalic acid (300 t), maleic anhydride (200 t) and propylene glycol (400 t)" — volumes well above the invoice lines in the dataset, which is consistent: propylene glycol is common to both, confirming its place in the framework contract.
+> **A.** Invoices FC-2024-00318 and FC-2024-00728 deliver mineral acids (HCl, H2SO4, HNO3), xylenes, NaOH, DCM, propylene glycol and triethylamine to Nordic Resins. The meeting CRC-NORDIC-2024-05 instead cites annual purchases of "phthalic acid (300 t), maleic anhydride (200 t) and propylene glycol (400 t)" — volumes well above the invoice lines in the dataset, which is consistent: propylene glycol is common to both, confirming its place in the framework contract.
 > *Cross source: FC-2024-00318.pdf + FC-2024-00728.pdf + CRC-NORDIC-2024-05.pdf*
 
 **Q50.** The 33% hydrochloric acid data sheet lists metal pickling applications. Is this application reflected in an order or invoice in the dataset?

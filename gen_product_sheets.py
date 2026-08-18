@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 """Generate mock product data sheets for ChemCorp Industries."""
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
@@ -29,7 +29,7 @@ PRODUCTS = [
         "name": "Technical Acetone 99.5%",
         "cas": "67-64-1",
         "ec": "200-662-2",
-        "formula": "C₃H₆O — (CH₃)₂CO",
+        "formula": "C3H6O — (CH3)2CO",
         "mw": "58.08 g/mol",
         "family": "Aliphatic ketone",
         "grade": "Technical",
@@ -48,13 +48,13 @@ PRODUCTS = [
             ("Explosive limits (LEL/UEL)", "2.5% / 13.0% vol."),
         ],
         "specs": [
-            ("Purity (GC)", "≥ 99.5%"),
-            ("Water (Karl Fischer)", "≤ 0.20%"),
-            ("Acidity (as acetic acid)", "≤ 0.002%"),
-            ("Evaporation residue", "≤ 0.001%"),
-            ("Colour (Hazen/APHA)", "≤ 10"),
-            ("Methanol", "≤ 0.05%"),
-            ("Isopropanol", "≤ 0.05%"),
+            ("Purity (GC)", ">= 99.5%"),
+            ("Water (Karl Fischer)", "<= 0.20%"),
+            ("Acidity (as acetic acid)", "<= 0.002%"),
+            ("Evaporation residue", "<= 0.001%"),
+            ("Colour (Hazen/APHA)", "<= 10"),
+            ("Methanol", "<= 0.05%"),
+            ("Isopropanol", "<= 0.05%"),
         ],
         "uses": [
             "Solvent for organic synthesis (esterification, aldol condensation)",
@@ -74,7 +74,7 @@ PRODUCTS = [
             ("P233", "Keep container tightly closed"),
             ("P261", "Avoid breathing vapours"),
             ("P305+P351+P338", "IF IN EYES: rinse cautiously with water"),
-            ("P370+P378", "In case of fire: use CO₂ or all-purpose foam"),
+            ("P370+P378", "In case of fire: use CO2 or all-purpose foam"),
         ],
         "storage": "Store in a cool, well-ventilated area away from sources of ignition. Recommended storage temperature: 5–25°C. Keep away from strong oxidisers, acids and concentrated bases. Shelf life: 36 months in the unopened original packaging.",
         "transport": "UN 1090 | ADR class 3 | Packing group II | Tunnel code D/E",
@@ -103,14 +103,14 @@ PRODUCTS = [
             ("Flash point", "Not applicable (solid)"),
         ],
         "specs": [
-            ("Purity (NaOH)", "≥ 99.0%"),
-            ("Na₂CO₃", "≤ 0.50%"),
-            ("NaCl", "≤ 0.02%"),
-            ("Na₂SO₄", "≤ 0.01%"),
-            ("Iron (Fe)", "≤ 5 ppm"),
-            ("Aluminium (Al)", "≤ 10 ppm"),
-            ("Silicon (Si)", "≤ 10 ppm"),
-            ("Water-insoluble matter", "≤ 0.02%"),
+            ("Purity (NaOH)", ">= 99.0%"),
+            ("Na2CO3", "<= 0.50%"),
+            ("NaCl", "<= 0.02%"),
+            ("Na2SO4", "<= 0.01%"),
+            ("Iron (Fe)", "<= 5 ppm"),
+            ("Aluminium (Al)", "<= 10 ppm"),
+            ("Silicon (Si)", "<= 10 ppm"),
+            ("Water-insoluble matter", "<= 0.02%"),
         ],
         "uses": [
             "Neutralisation of acidic effluent in water treatment",
@@ -132,7 +132,7 @@ PRODUCTS = [
             ("P305+P351+P338", "IF IN EYES: rinse with water for 15 minutes"),
             ("P405", "Store locked up"),
         ],
-        "storage": "Store in tightly closed containers in a dry place. Protect from moisture and atmospheric CO₂. Keep away from acids and metals (aluminium, zinc, tin). Shelf life: 24 months in closed packaging.",
+        "storage": "Store in tightly closed containers in a dry place. Protect from moisture and atmospheric CO2. Keep away from acids and metals (aluminium, zinc, tin). Shelf life: 24 months in closed packaging.",
         "transport": "UN 1823 | ADR class 8 | Packing group II | Tunnel code E",
         "certif": "ISO 9001:2015 | ISO 14001:2015 | Tested per EN ISO 8655",
     },
@@ -141,7 +141,7 @@ PRODUCTS = [
         "name": "Sulfuric Acid 96% — Technical Grade",
         "cas": "7664-93-9",
         "ec": "231-639-5",
-        "formula": "H₂SO₄",
+        "formula": "H2SO4",
         "mw": "98.08 g/mol",
         "family": "Strong mineral acid",
         "grade": "Technical",
@@ -150,7 +150,7 @@ PRODUCTS = [
             ("Physical state", "Oily liquid, colourless to slightly yellowish"),
             ("Odour", "Slightly acrid at high concentration"),
             ("Boiling point", "330 °C (with decomposition)"),
-            ("Freezing point", "3 °C (H₂SO₄ 96%)"),
+            ("Freezing point", "3 °C (H2SO4 96%)"),
             ("Density at 20°C", "1.835 g/mL"),
             ("Viscosity at 20°C", "21.4 mPa·s"),
             ("pH (1% dilute solution)", "< 1"),
@@ -159,14 +159,14 @@ PRODUCTS = [
             ("Flash point", "Not applicable"),
         ],
         "specs": [
-            ("H₂SO₄ content", "95.0–97.0%"),
-            ("Ignition residue", "≤ 0.005%"),
-            ("Iron (Fe)", "≤ 5 ppm"),
-            ("Chlorides (Cl⁻)", "≤ 2 ppm"),
-            ("Arsenic (As)", "≤ 0.05 ppm"),
-            ("Lead (Pb)", "≤ 0.1 ppm"),
-            ("Nitrates (NO₃⁻)", "≤ 5 ppm"),
-            ("Reducing agents (SO₂)", "≤ 5 ppm"),
+            ("H2SO4 content", "95.0–97.0%"),
+            ("Ignition residue", "<= 0.005%"),
+            ("Iron (Fe)", "<= 5 ppm"),
+            ("Chlorides (Cl-)", "<= 2 ppm"),
+            ("Arsenic (As)", "<= 0.05 ppm"),
+            ("Lead (Pb)", "<= 0.1 ppm"),
+            ("Nitrates (NO3-)", "<= 5 ppm"),
+            ("Reducing agents (SO2)", "<= 5 ppm"),
         ],
         "uses": [
             "Pickling and surface treatment of metals (steel, copper, aluminium)",
@@ -198,7 +198,7 @@ PRODUCTS = [
         "name": "Propylene Glycol — USP/Food Grade",
         "cas": "57-55-6",
         "ec": "200-338-0",
-        "formula": "C₃H₈O₂ — CH₃CH(OH)CH₂OH",
+        "formula": "C3H8O2 — CH3CH(OH)CH2OH",
         "mw": "76.09 g/mol",
         "family": "Aliphatic diol",
         "grade": "USP / Food grade E1520",
@@ -216,16 +216,16 @@ PRODUCTS = [
             ("Refractive index nD20", "1.4326"),
         ],
         "specs": [
-            ("Purity (GC)", "≥ 99.5%"),
-            ("Water", "≤ 0.20%"),
+            ("Purity (GC)", ">= 99.5%"),
+            ("Water", "<= 0.20%"),
             ("Density at 20°C", "1.035–1.037 g/mL"),
             ("Refractive index", "1.4320–1.4330"),
-            ("Acidity (as lactic acid)", "≤ 0.007%"),
-            ("Arsenic (As)", "≤ 1.5 ppm"),
-            ("Lead (Pb)", "≤ 5 ppm"),
-            ("Chlorides (Cl⁻)", "≤ 10 ppm"),
-            ("Ethylene glycol", "≤ 0.06%"),
-            ("Diethylene glycol", "≤ 0.10%"),
+            ("Acidity (as lactic acid)", "<= 0.007%"),
+            ("Arsenic (As)", "<= 1.5 ppm"),
+            ("Lead (Pb)", "<= 5 ppm"),
+            ("Chlorides (Cl-)", "<= 10 ppm"),
+            ("Ethylene glycol", "<= 0.06%"),
+            ("Diethylene glycol", "<= 0.10%"),
         ],
         "uses": [
             "Pharmaceutical solvent (excipient in syrups and injectables)",
@@ -268,17 +268,17 @@ PRODUCTS = [
         "specs": [
             ("HCl content", "32.0–34.0%"),
             ("Density at 20°C", "1.155–1.165 g/mL"),
-            ("Evaporation residue", "≤ 0.01%"),
-            ("Sulfates (SO₄²⁻)", "≤ 5 ppm"),
-            ("Iron (Fe)", "≤ 3 ppm"),
-            ("Arsenic (As)", "≤ 0.1 ppm"),
-            ("Heavy metals (Pb)", "≤ 1 ppm"),
-            ("Colour (APHA)", "≤ 20"),
+            ("Evaporation residue", "<= 0.01%"),
+            ("Sulfates (SO4²-)", "<= 5 ppm"),
+            ("Iron (Fe)", "<= 3 ppm"),
+            ("Arsenic (As)", "<= 0.1 ppm"),
+            ("Heavy metals (Pb)", "<= 1 ppm"),
+            ("Colour (APHA)", "<= 20"),
         ],
         "uses": [
             "Acid pickling of steel before galvanising or welding",
             "Regeneration of cationic ion-exchange resins",
-            "Synthesis of metal chlorides (FeCl₂, ZnCl₂, AlCl₃)",
+            "Synthesis of metal chlorides (FeCl2, ZnCl2, AlCl3)",
             "pH adjustment in water treatment",
             "Gelatine extraction and protein hydrolysis",
             "Cleaning of tanks and pipework in the food industry",
@@ -458,15 +458,15 @@ def build_sheet(prod, out_dir):
          "Never discharge into drains or watercourses."),
         ("First aid (operational summary)",
          "INHALATION: Move the person to fresh air, in a semi-seated position. If breathing is difficult, "
-         "administer O₂ and call the emergency services (15 in France). SKIN CONTACT: Remove contaminated clothing. "
+         "administer O2 and call the emergency services (15 in France). SKIN CONTACT: Remove contaminated clothing. "
          "Rinse with plenty of water for at least 15 minutes. EYE CONTACT: Rinse with water for at least 15 minutes, "
          "holding the eyelids open. Consult an ophthalmologist. INGESTION: Do not induce vomiting. Rinse the mouth. "
          "Call the Poison Control Centre (European number: 0800 59 59 59)."),
         ("Environmental data (in-house results)",
-         "BOD₅ (5 days): tested per ISO 5815. COD: tested per ISO 15705. "
+         "BOD5 (5 days): tested per ISO 5815. COD: tested per ISO 15705. "
          "Log Kow (n-octanol/water partition coefficient): measured per OECD 117. "
          "Aerobic biodegradability: tested per OECD 301B. "
-         "Aquatic toxicity (Daphnia magna): EC₅₀ per OECD 202. "
+         "Aquatic toxicity (Daphnia magna): EC50 per OECD 202. "
          "For the complete numerical values, refer to section 12 of the Safety Data Sheet."),
         ("Additional regulatory information",
          f"This product is registered under REACH: registration number available on request. "
@@ -492,7 +492,7 @@ def build_sheet(prod, out_dir):
     print(f"  Generated: {path}")
 
 if __name__ == '__main__':
-    out = os.path.join(os.path.dirname(__file__), 'data', 'product-sheets')
+    out = os.path.join(os.path.dirname(__file__), 'website', 'docs', 'product-sheets')
     os.makedirs(out, exist_ok=True)
     for p in PRODUCTS:
         build_sheet(p, out)

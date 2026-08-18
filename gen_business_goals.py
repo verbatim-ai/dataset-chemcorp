@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 """Generate mock business goals / strategic plans for ChemCorp Industries."""
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
@@ -33,7 +33,7 @@ DOCS = [
                  ("2027 revenue target", "€62M (+32% vs 2023)", "Based on organic growth of 8% per year and international expansion"),
                  ("2027 EBITDA margin target", "22%", "Improved product mix towards specialities (margin above 30%)"),
                  ("Bio-based share of revenue", "25% by 2027", "Against below 1% in 2023 — driven by the BioSolv and EcoSolv ranges"),
-                 ("CO₂ footprint reduction", "-35% in intensity per tonne by 2027", "2021 baseline, SBTi commitments under validation"),
+                 ("CO2 footprint reduction", "-35% in intensity per tonne by 2027", "2021 baseline, SBTi commitments under validation"),
                  ("New markets", "Active presence in Benelux + Maghreb + Poland", "Distribution agreements signed or in progress"),
              ]),
             ("COMMERCIAL OBJECTIVES 2024",
@@ -122,13 +122,13 @@ DOCS = [
              [
                  ("GreenCat-Est (esterification)", "50 L pilot validated Q4 2024", "Modified H-ZSM-5 zeolite; estimated energy saving -23%; ANR co-funding €180k"),
                  ("GreenCat-Hyd (hydration)", "Laboratory study 2024-2025", "Applied to the hydration of light olefins; partnership with CNRS Lyon"),
-                 ("GreenCat-Ox (mild oxidation)", "Exploratory research 2025-2027", "Replacing KMnO4/CrO3 with Au/TiO₂ catalysis for primary alcohols"),
+                 ("GreenCat-Ox (mild oxidation)", "Exploratory research 2025-2027", "Replacing KMnO4/CrO3 with Au/TiO2 catalysis for primary alcohols"),
              ]),
             ("KEY MILESTONES AND INDICATORS",
              "The roadmap is steered through quarterly milestones and key performance indicators (KPIs) approved by the Executive Committee and the Board of Directors.",
              [
                  ("Bio-based share of revenue", "2024: 2% | 2026: 12% | 2030: 25%", "Monthly monitoring — Executive Committee reporting"),
-                 ("CO₂ intensity (kgCO₂ per tonne of product)", "2024: -10% | 2027: -30% | 2030: -50%", "2021 baseline; scope 1+2; annual Deloitte audit"),
+                 ("CO2 intensity (kgCO2 per tonne of product)", "2024: -10% | 2027: -30% | 2030: -50%", "2021 baseline; scope 1+2; annual Deloitte audit"),
                  ("Energy intensity (kWh per tonne)", "2024: -8% | 2027: -22% | 2030: -40%", "Monitored by workshop; real-time energy dashboards"),
                  ("Waste to landfill", "2024: below 5% | 2030: 0%", "Zero non-recovered waste plan; partnership with Veolia since 2024"),
                  ("Green Chemistry R&amp;D budget", "2024: €380k | 2025: €650k | 2027: €1.2M", "Of which 30% grant-funded (ANR, ADEME, Horizon Europe)"),
@@ -285,7 +285,7 @@ def build_doc(doc_data, out_dir):
     print(f"  Generated: {path}")
 
 if __name__ == '__main__':
-    out = os.path.join(os.path.dirname(__file__), 'data', 'business-goals')
+    out = os.path.join(os.path.dirname(__file__), 'website', 'docs', 'business-goals')
     os.makedirs(out, exist_ok=True)
     for d in DOCS:
         build_doc(d, out)

@@ -1,0 +1,8 @@
+# Applied by Netlify / Cloudflare Pages at the publish root.
+# X-Robots-Tag is the only way to mark non-HTML files (the PDF corpus) as noindex.
+
+/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+/docs/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex

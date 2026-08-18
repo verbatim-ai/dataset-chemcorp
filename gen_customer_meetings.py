@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 """Generate mock customer meeting notes for ChemCorp Industries."""
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
@@ -144,8 +144,8 @@ MEETINGS = [
                  "Mr Fontaine presented the in-house test results for the EcoSolv-D4 formulation received in "
                  "December 2023 (5 L samples). Tests were run on 3 applications: degreasing rolled steel, "
                  "cleaning anodised aluminium, and cleaning ABS plastics.",
-                 "Results: degreasing power, Kavale test 7.2 (target: above 7.0) ✓. Drying time 8 min at 20°C "
-                 "(target: under 10 min) ✓. Material compatibility: OK on steel and aluminium, traces of whitening on ABS "
+                 "Results: degreasing power, Kavale test 7.2 (target: above 7.0) — met. Drying time 8 min at 20°C "
+                 "(target: under 10 min) — met. Material compatibility: OK on steel and aluminium, traces of whitening on ABS "
                  "— requires a formulation adjustment. Odour judged acceptable by the operators (5-person panel test).",
                  "Mr Fontaine asked for a version with 5% less aromatic co-solvent to avoid the ABS whitening. "
                  "Mr Ferretti undertook to prepare an EcoSolv-D4-mod formulation within 3 weeks, with 500 mL "
@@ -401,7 +401,7 @@ def build_meeting(meeting, out_dir):
     print(f"  Generated: {path}")
 
 if __name__ == '__main__':
-    out = os.path.join(os.path.dirname(__file__), 'data', 'customer-meeting-notes')
+    out = os.path.join(os.path.dirname(__file__), 'website', 'docs', 'customer-meeting-notes')
     os.makedirs(out, exist_ok=True)
     for m in MEETINGS:
         build_meeting(m, out)

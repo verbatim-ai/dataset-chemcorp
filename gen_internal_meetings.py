@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 """Generate mock internal meeting notes for ChemCorp Industries."""
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
@@ -101,7 +101,7 @@ MEETINGS = [
              ]),
         ],
         "actions": [
-            ("Ms Blanc", "Prepare the BHT antioxidant trial plan + packaging under N₂", "2024-02-01"),
+            ("Ms Blanc", "Prepare the BHT antioxidant trial plan + packaging under N2", "2024-02-01"),
             ("Mr Lecomte", "Analyse the R-103 reactor by-product fractions by HPLC", "2024-01-26"),
             ("Mr Ferretti", "Contact the Lebret firm to scope the PCT patent filing", "2024-01-25"),
             ("Mr Vidal", "Schedule recalibration of sensors TC-103A/B and the SV-103B check", "2024-01-25"),
@@ -399,7 +399,7 @@ def build_meeting(meeting, out_dir):
     print(f"  Generated: {path}")
 
 if __name__ == '__main__':
-    out = os.path.join(os.path.dirname(__file__), 'data', 'internal-meeting-notes')
+    out = os.path.join(os.path.dirname(__file__), 'website', 'docs', 'internal-meeting-notes')
     os.makedirs(out, exist_ok=True)
     for m in MEETINGS:
         build_meeting(m, out)
