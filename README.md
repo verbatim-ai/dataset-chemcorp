@@ -126,7 +126,8 @@ Regenerated PDFs differ from the committed ones only in their embedded creation 
 ## The website
 
 `gen_website.py` emits a four-page static site into `website/`, ready to publish to a CDN with no
-build step and no external assets:
+build step. The only external asset is the Verbatim AI chatbot widget, loaded from the Verbatim CDN
+(see [The AI assistant widget](#the-ai-assistant-widget) below):
 
 | Page | Contents |
 |---|---|
@@ -138,6 +139,42 @@ build step and no external assets:
 The document index is built by scanning `website/docs/`, and the benchmark page is parsed from
 `test.md`, so neither can drift from the corpus. Every page carries a fictional-content disclaimer
 in a banner and again in the footer. The CSS is theme-aware (light and dark).
+
+### The AI assistant widget
+
+Every page carries the [Verbatim AI](https://www.verbatim-ai.com) chatbot widget, so the site doubles
+as the live demo for it. `page()` in `gen_website.py` emits three lines before `</body>` on all four
+pages — a mount container, the widget bundle from the Verbatim CDN, and the configuration:
+
+```html
+<div id="verbatim-chatbot"></div>
+<script src="https://cdn.verbatim-ai.com/widget/chatbot/v1/chatbot-widget.iife.js"></script>
+<script src="assets/verbatim-widget.js"></script>
+```
+
+Neither tag carries `async` or `defer`: classic scripts run in document order, and the mount call
+must run after the bundle. The widget renders inside a Shadow DOM and injects its own CSS, so no
+stylesheet is needed.
+
+**`website/assets/verbatim-widget.js` is the one hand-maintained file under `website/`.**
+`gen_website.py` writes it only if it is missing and prints `Kept: …` otherwise, so credentials and
+branding survive every rebuild — everything else in `website/` is overwritten on each run. To reset
+it to the template, delete it and re-run the generator.
+
+Two values must be filled in at the top of that file:
+
+| Value | Notes |
+|---|---|
+| `ACCESS_TOKEN` | Minted via `POST /v1/auth/access-token`. Requires the scopes `session:read`, `session:create`, `post:read` and `post:create` |
+| `CORPUS_IDS` | At least one corpus id, from `GET /v1/corpus/` or the back office |
+
+Until both are set, the widget logs a one-line notice to the console and does not mount — it does
+**not** throw. Everything else (title, greeting, suggested prompts drawn from `test.md`, and a theme
+matching the site accent) is already configured. Uncomment the `apiBaseUrl` line to point at staging.
+
+The token is served to the browser in plain text, so use a short-lived, org-scoped token — never a
+raw JWT or a master secret. The documented default TTL is one hour; refreshing it does not need a
+rebuild, just `aws s3 cp website/assets/verbatim-widget.js s3://chemcorp.verbatim-ai.com/assets/`.
 
 ### Keeping the site out of search engines
 
@@ -219,6 +256,7 @@ Every ground-truth string in `test.md` is verified to appear in the PDF it cites
 │   ├── dataset.html
 │   ├── benchmark.html
 │   ├── assets/site.css
+│   ├── assets/verbatim-widget.js  # chatbot widget config (hand-maintained)
 │   ├── robots.txt               # search engine exclusion
 │   ├── _headers                 # X-Robots-Tag for Netlify / Cloudflare Pages
 │   ├── vercel.json              # X-Robots-Tag for Vercel
